@@ -1,10 +1,5 @@
-win? 
-
-dealer decision? 
-    if < 17  
-      hit 
-    else 
-      stand
-
-stand? 
-  now dealer's turn. 
+[ ] reset button
+[ ] collection of past hands
+[ ] multiple decks in one deck
+[ ] prettification
+[ ] 

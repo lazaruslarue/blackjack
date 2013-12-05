@@ -9,30 +9,23 @@ class window.App extends Backbone.Model
     @get('playerHand').on('dealerTurn', @playDealer, @)
     @get('playerHand').on('computeScores', @computeScores, @)
     @get('dealerHand').on('computeScores', @computeScores, @)
-    @get('playerHand').on('bustedHand', @bustedHand)
-    
+    # @get('playerHand').on('bustedHand', @bustedHand)
+
+
+    #@get('playerHand').on('change:isBusted', @testBusted, @)
+    #@get('dealerHand').on('change:isBusted', @testBusted, @)
+
 
   playDealer: ->
-    # Check own score
-    # < 17
-    # hit
-    # else
-    # stand
     player = @get('playerHand')
     dealer = @get('dealerHand')
-    debugger;
-    console.log @get 'dealerHand'
-    if dealer.scores()[0] > 10
-      debugger;
+    if dealer.scores()[0] > 17
       dealer.stand()
     else
       dealer.hit()
       @playDealer()
 
   computeScores: ->
-
-    console.log('computing scores')
-
     playerscore = 21 - @get('playerHand').scores()[0]
     dealerscore = 21 - @get('dealerHand').scores()[0]
     if playerscore < dealerscore then @announceWinner(@get('playerHand'))
@@ -44,9 +37,10 @@ class window.App extends Backbone.Model
 
 
   bustedHand: (hand)->
+    debugger;
     @isBusted =  true;
     @stand()
-    #perform the transfer of turn to the
-    #tnext user, or dealer if no more players
-    #if dealer, then computescores.
 
+
+  testBusted: ->
+    console.log("Here!")
