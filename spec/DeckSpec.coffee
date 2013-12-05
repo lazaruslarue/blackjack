@@ -2,12 +2,12 @@ describe 'deck', ->
   deck = null
   hand = null
   app = null;
-  dealerHand = null;
+  dealer = null;
 
   beforeEach ->
     app = new App()
     hand = app.get('playerHand');
-    dealerHand = app.get('dealerHand');
+    dealer = app.get('dealerHand');
     deck = app.get('deck');
 
   # describe 'hit', ->
@@ -22,17 +22,24 @@ describe 'deck', ->
     it "should have a stand method",  ->
       expect( hand.stand() ).toBeDefined
     it "should pass pass play when stand is invoked", ->
-      debugger;
       spyOn(app, 'playDealer')
       hand.stand()
       expect(app.playDealer).toHaveBeenCalled
     it ""
 
   describe 'busted', ->
-    it "should detect when you have too many points", ->
+    it "should detect when player has too many points", ->
+      spyOn(app, 'bustedHand')
       while hand.scores() < 23
         hand.hit()
-      expect(hand.busted).toBe true
+      expect(app.bustedHand()).toHaveBeenCalled 
+
+  describe 'busted', ->
+    it "should detect when dealer has too many points", ->
+      spyOn(app, 'bustedHand')
+      while dealer.scores() < 23
+        dealer.hit()
+      expect(app.bustedHand()).toHaveBeenCalled
 
   describe 'dealer play ... ', ->
     it "dealer should hit below 17", ->

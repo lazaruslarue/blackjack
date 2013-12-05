@@ -14,3 +14,11 @@
 .hand {
   overflow: auto;
 }
+
+.winner {
+  color: green;
+}
+
+.busted {
+  color: red;
+}

@@ -3,6 +3,7 @@ class window.Hand extends Backbone.Collection
   model: Card
 
   initialize: (array, @deck, @isDealer) ->
+    @isBusted = false;
 
   hit: ->
     @add(@deck.pop()).last()
@@ -30,4 +31,18 @@ class window.Hand extends Backbone.Collection
 
   checkBusted: ->
     #is @scores > 21?
-    if @scores[0] > 21 then @trigger 'bustedHand'
+    debugger;
+    console.log(@isDealer, 'is dealer?')
+    if @scores()[0] > 21 then @trigger 'bustedHand'
+
+
+
+
+
+
+
+
+
+
+
+
