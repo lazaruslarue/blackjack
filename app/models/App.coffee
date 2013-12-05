@@ -5,16 +5,13 @@ class window.App extends Backbone.Model
     @set 'deck', deck = new Deck()
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
+    @set 'game', new Game(@get 'playerHand', @get 'dealerHand')
+    @set 'gameCollection', new GameCollection()
+
 
     @get('playerHand').on('dealerTurn', @playDealer, @)
     @get('playerHand').on('computeScores', @computeScores, @)
     @get('dealerHand').on('computeScores', @computeScores, @)
-    # @get('playerHand').on('bustedHand', @bustedHand)
-
-
-    #@get('playerHand').on('change:isBusted', @testBusted, @)
-    #@get('dealerHand').on('change:isBusted', @testBusted, @)
-
 
   playDealer: ->
     player = @get('playerHand')
@@ -45,6 +42,12 @@ class window.App extends Backbone.Model
   testBusted: ->
     console.log("Here!")
 
-  #reset: ->
+  newGame: ->
+    @get('gameCollection').add(@get('game'))
 
-    # @set 'deck', deck = new Deck()
+    @set 'deck', deck = new Deck()
+    @set 'playerHand', deck.dealPlayer()
+    @set 'dealerHand', deck.dealDealer()
+    @set 'game', new Game(@get 'playerHand', @get 'dealerHand')
+
+
