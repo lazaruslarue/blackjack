@@ -1,5 +1,5 @@
 [ ] reset button
+[ ] prettification
 [ ] collection of past hands
 [ ] multiple decks in one deck
-[ ] prettification
-[ ] 
+[ ]

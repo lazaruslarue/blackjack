@@ -44,3 +44,7 @@ class window.App extends Backbone.Model
 
   testBusted: ->
     console.log("Here!")
+
+  #reset: ->
+
+    # @set 'deck', deck = new Deck()

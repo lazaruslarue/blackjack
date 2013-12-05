@@ -20,6 +20,5 @@ class window.HandView extends Backbone.View
     @$('.score').text @collection.scores()[0]
 
   showBusted: =>
-      debugger
       console.log('showBusted ')
       @$el.addClass('busted')
