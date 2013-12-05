@@ -1,3 +1,4 @@
+
 class window.AppView extends Backbone.View
 
   template: _.template '

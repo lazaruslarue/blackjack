@@ -1,0 +1,10 @@
+win? 
+
+dealer decision? 
+    if < 17  
+      hit 
+    else 
+      stand
+
+stand? 
+  now dealer's turn. 

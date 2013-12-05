@@ -1,3 +1,4 @@
+
 class window.CardView extends Backbone.View
 
   className: 'card'

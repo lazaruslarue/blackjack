@@ -1,3 +1,4 @@
+
 class window.HandView extends Backbone.View
 
   className: 'hand'
