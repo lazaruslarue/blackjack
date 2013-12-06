@@ -19,18 +19,20 @@ class window.AppView extends Backbone.View
     @render()
 
   render: ->
+    @renderNewDeck()
+
+  renderNewDeck: ->
     @$el.children().detach()
     @$el.html @template()
     @$('.player-hand-container').html new HandView(collection: @model.get 'playerHand').el
     @$('.dealer-hand-container').html new HandView(collection: @model.get 'dealerHand').el
     @$('.game-collection-view').html new GameCollectionView(collection: @model.get 'gameCollection').el
 
+
+  renderGameCollectionView: ->
+
   restart: ->
-    console.log("Here ")
     @model.newGame()
-    #@render()
-
-    # @render() #commented out, this would make a new gameCollection. We need to trigger gameCollection to rerender, instead. 
-
+    @renderNewDeck()
 
 

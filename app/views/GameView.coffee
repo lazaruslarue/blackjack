@@ -13,7 +13,6 @@ class window.GameView extends Backbone.View
     @render()
 
   render: ->
-    debugger
     @$el.html @template
     @$('.player-hand').append new HandView(collection: @model.get 'playerHand').el
     @$('.dealer-hand').append new HandView(collection: @model.get 'dealerHand').el

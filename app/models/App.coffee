@@ -46,8 +46,11 @@ class window.App extends Backbone.Model
 
   newGame: ->
     @get('gameCollection').add(@get('game'))
-    # @set 'deck', deck = new Deck()
-    # @set 'playerHand', deck.dealPlayer()
-    # @set 'dealerHand', deck.dealDealer()
-    # @set 'game', new Game([@get 'playerHand', @get 'dealerHand'])
+    @set 'deck', deck = new Deck()
+    @set 'playerHand', deck.dealPlayer()
+    @set 'dealerHand', deck.dealDealer()
+    @dH1 = @get 'dealerHand'
+    @pH1 = @get 'playerHand'
+    @set 'game', new Game([@pH1, @dH1])
+
 
