@@ -15,6 +15,7 @@ class window.AppView extends Backbone.View
     "click .restart-button": -> @restart()
 
   initialize: ->
+
     @render()
 
   render: ->
@@ -22,12 +23,14 @@ class window.AppView extends Backbone.View
     @$el.html @template()
     @$('.player-hand-container').html new HandView(collection: @model.get 'playerHand').el
     @$('.dealer-hand-container').html new HandView(collection: @model.get 'dealerHand').el
-    @$('.game-collection-view').html new GameCollectionView(collection: @model.get 'gameCollection')
+    @$('.game-collection-view').html new GameCollectionView(collection: @model.get 'gameCollection').el
 
   restart: ->
     console.log("Here ")
     @model.newGame()
-    @render()
+    #@render()
+
+    # @render() #commented out, this would make a new gameCollection. We need to trigger gameCollection to rerender, instead. 
 
 
 

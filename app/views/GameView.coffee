@@ -10,12 +10,13 @@ class window.GameView extends Backbone.View
       '
 
   initialize: ->
-    @render
+    @render()
 
   render: ->
+    debugger
     @$el.html @template
-    @$('.player-hand').append new HandView(@model get 'playerHand').$el
-    @$('.dealer-hand').append new HandView(@model get 'dealerHand').$el
+    @$('.player-hand').append new HandView(collection: @model.get 'playerHand').el
+    @$('.dealer-hand').append new HandView(collection: @model.get 'dealerHand').el
 
-    @$('.dealer-score').text @model.get 'dealerHand'.scores()[0]
-    @$('.player-score').text @model.get 'playerHand'.scores()[0]
+    @$('.dealer-score').text (@model.get 'dealerHand').scores()[0]
+    @$('.player-score').text (@model.get 'playerHand').scores()[0]

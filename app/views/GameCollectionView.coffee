@@ -1,16 +1,16 @@
 class window.GameCollectionView extends Backbone.View
 
-  className: 'game-collection-view'
+  className: 'game-collections'
 
   template: _.template '<h3>PreviousGames</h3>'
 
   initialize: ->
-    @render
-    @collection.on('add', @render())
+    @collection.on 'add', => @render()
 
-  render: ->
+  render: =>
     @$el.children().detach()
     @$el.html @template @collection
-    @$el.append @collection.map (game) ->
-      new GameView(model: game).$el
+    @$el.append(@collection.map (game) =>
+      debugger;
+      new GameView(model: game).$el)
 #   @$('.score').text @collection.scores()[0]

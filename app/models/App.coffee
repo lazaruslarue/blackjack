@@ -5,7 +5,9 @@ class window.App extends Backbone.Model
     @set 'deck', deck = new Deck()
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
-    @set 'game', new Game(@get 'playerHand', @get 'dealerHand')
+    @dH = @get 'dealerHand'
+    @pH = @get 'playerHand'
+    @set 'game', new Game([@pH, @dH])
     @set 'gameCollection', new GameCollection()
 
 
@@ -44,10 +46,8 @@ class window.App extends Backbone.Model
 
   newGame: ->
     @get('gameCollection').add(@get('game'))
-
-    @set 'deck', deck = new Deck()
-    @set 'playerHand', deck.dealPlayer()
-    @set 'dealerHand', deck.dealDealer()
-    @set 'game', new Game(@get 'playerHand', @get 'dealerHand')
-
+    # @set 'deck', deck = new Deck()
+    # @set 'playerHand', deck.dealPlayer()
+    # @set 'dealerHand', deck.dealDealer()
+    # @set 'game', new Game([@get 'playerHand', @get 'dealerHand'])
 
